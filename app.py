@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+ -*- coding: utf-8 -*-
 
 from flask import Flask, request, jsonify, abort, send_from_directory
 from flask_cors import CORS
@@ -11,7 +10,7 @@ import random
 from datetime import datetime
 
 # Создаем приложение Flask
-app = Flask(__name__, static_folder='api/run/static', static_url_path='')
+app = Flask(__name__, static_folder='.', static_url_path='')
 CORS(app)  # Enable CORS for all routes
 
 # Database setup
