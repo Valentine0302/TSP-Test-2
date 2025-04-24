@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расчет стоимости морских перевозок - TSP Transport OÜ</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/button-styles.css">
+    <link rel="stylesheet" href="../css/calculation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .carrier-comparison {
+            margin-top: 30px;
+            overflow-x: auto;
+        }
+        
+        .carrier-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .carrier-table th, .carrier-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .carrier-table th {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .carrier-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .carrier-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .best-rate {
+            background-color: #e8f4ff !important;
+            border-left: 3px solid var(--primary-blue);
+            font-weight: bold;
+        }
+        
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-blue);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .calculation-form-container {
+            display: block;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .step-indicator::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #ddd;
+            z-index: 1;
+        }
+        
+        .step {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step.active {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .step.completed {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .step-label {
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="mailto:transport@tspgrupp.ee"><i class="fas fa-envelope"></i> transport@tspgrupp.ee</a>
+                    <a href="tel:+37266644400"><i class="fas fa-phone"></i> +372 666 4400</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-main">
+                <div class="logo">
+                    <a href="../index.html">
+                        <img src="../images/optimized/logo.png" alt="TSP Transport OÜ Logo">
+                    </a>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html#home">Главная</a></li>
+                        <li><a href="../index.html#about">О компании</a></li>
+                        <li><a href="../index.html#services">Услуги</a></li>
+                        <li><a href="../index.html#advantages">Преимущества</a></li>
+                        <li><a href="../index.html#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <section class="calculation-section">
+        <div class="container">
+            <div class="section-title">
+                <h1>Расчет стоимости морских перевозок</h1>
+                <p>Заполните форму ниже для получения расчета стоимости морской перевозки</p>
+            </div>
+            
+            <div id="alertContainer"></div>
+            
+            <!-- Форма расчета -->
+            <div class="calculation-form-container" id="calculationFormContainer">
+                <form class="calculation-form" id="seaFreightForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="origin">Порт отправления</label>
+                            <input type="text" id="origin" name="origin" required placeholder="Например: Шанхай, Китай">
+                        </div>
+                        <div class="form-group">
+                            <label for="destination">Порт назначения</label>
+                            <input type="text" id="destination" name="destination" required placeholder="Например: Роттердам, Нидерланды">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cargoType">Тип груза</label>
+                            <select id="cargoType" name="cargoType" required>
+                                <option value="" disabled selected>Выберите тип груза</option>
+                                <option value="fcl">FCL (полный контейнер)</option>
+                                <option value="lcl">LCL (сборный груз)</option>
+                                <option value="bulk">Навалочный груз</option>
+                                <option value="ro-ro">Ро-Ро (автомобили, техника)</option>
+                                <option value="dangerous">Опасный груз</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="containerType">Тип контейнера</label>
+                            <select id="containerType" name="containerType">
+                                <option value="" disabled selected>Выберите тип контейнера</option>
+                                <option value="20dv">20' DV (стандартный)</option>
+                                <option value="40dv">40' DV (стандартный)</option>
+                                <option value="40hc">40' HC (высокий)</option>
+                                <option value="20fr">20' FR (с открытым верхом)</option>
+                                <option value="40fr">40' FR (с открытым верхом)</option>
+                                <option value="20ot">20' OT (открытый)</option>
+                                <option value="40ot">40' OT (открытый)</option>
+                                <option value="20rf">20' RF (рефрижератор)</option>
+                                <option value="40rf">40' RF (рефрижератор)</option>
+                                <option value="none">Не требуется (LCL/навалочный)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="weight">Вес груза (кг)</label>
+                            <input type="number" id="weight" name="weight" required min="1" placeholder="Например: 5000">
+                        </div>
+                        <div class="form-group">
+                            <label for="volume">Объем груза (м³)</label>
+                            <input type="number" id="volume" name="volume" required min="0.1" step="0.1" placeholder="Например: 30">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="goodsValue">Стоимость груза (USD)</label>
+                            <input type="number" id="goodsValue" name="goodsValue" min="1" placeholder="Например: 50000">
+                        </div>
+                        <div class="form-group">
+                            <label for="deliveryDate">Желаемая дата отправки</label>
+                            <input type="date" id="deliveryDate" name="deliveryDate">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="incoterms">Условия поставки (Incoterms)</label>
+                            <select id="incoterms" name="incoterms">
+                                <option value="fob">FOB (Free On Board)</option>
+                                <option value="cif">CIF (Cost, Insurance & Freight)</option>
+                                <option value="exw">EXW (Ex Works)</option>
+                                <option value="fas">FAS (Free Alongside Ship)</option>
+                                <option value="cfr">CFR (Cost and Freight)</option>
+                                <option value="cpt">CPT (Carriage Paid To)</option>
+                                <option value="cip">CIP (Carriage & Insurance Paid)</option>
+                                <option value="dap">DAP (Delivered At Place)</option>
+                                <option value="ddp">DDP (Delivered Duty Paid)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="dangerous">Опасный груз</label>
+                            <select id="dangerous" name="dangerous">
+                                <option value="no">Нет</option>
+                                <option value="yes">Да</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="insurance">Страхование груза</label>
+                            <select id="insurance" name="insurance">
+                                <option value="no">Не требуется</option>
+                                <option value="basic">Базовое</option>
+                                <option value="full">Полное</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="customs">Таможенное оформление</label>
+                            <select id="customs" name="customs">
+                                <option value="no">Не требуется</option>
+                                <option value="export">Экспорт</option>
+                                <option value="import">Импорт</option>
+                                <option value="both">Экспорт и импорт</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="additionalInfo">Дополнительная информация</label>
+                        <textarea id="additionalInfo" name="additionalInfo" rows="3" placeholder="Укажите любую дополнительную информацию о грузе или особых требованиях"></textarea>
+                    </div>
+                    
+                    <h3>Контактная информация</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" name="name" required placeholder="Ваше имя">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Компания</label>
+                            <input type="text" id="company" name="company" placeholder="Название компании (необязательно)">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="Ваш email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Ваш телефон (необязательно)">
+                        </div>
+                    </div>
+                    
+                    <div class="loading-spinner" id="calculationSpinner">
+                        <div class="spinner"></div>
+                        <p>Расчет стоимости...</p>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-submit">Рассчитать стоимость</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Результаты расчета (будут показаны после отправки формы) -->
+            <div id="resultsContainer" style="display: none;">
+                <h2>Результаты расчета</h2>
+                
+                <div class="carrier-comparison">
+                    <h3>Сравнение ставок перевозчиков</h3>
+                    <table class="carrier-table" id="carrierTable">
+                        <thead>
+                            <tr>
+                                <th>Перевозчик</th>
+                                <th>Стоимость (USD)</th>
+                                <th>Время транзита (дни)</th>
+                                <th>Рекомендация</th>
+                            </tr>
+                        </thead>
+                        <tbody id="carrierTableBody">
+                            <!-- Результаты будут добавлены динамически -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="form-submit">
+                    <button type="button" class="btn btn-secondary" id="backToFormButton">Вернуться к форме</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/optimized/logo-white.png" alt="TSP Transport OÜ Logo">
+                </div>
+                <div class="footer-contact">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Punane 6-219, Tallinn 13619, Estonia</p>
+                    <p><i class="fas fa-phone"></i> +372 666 4400</p>
+                    <p><i class="fas fa-envelope"></i> transport@tspgrupp.ee</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="../index.html#home">Главная</a></li>
+                        <li><a href="../index.html#about">О компании</a></li>
+                        <li><a href="../index.html#services">Услуги</a></li>
+                        <li><a href="../index.html#advantages">Преимущества</a></li>
+                        <li><a href="../index.html#contact">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TSP Transport OÜ. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const seaFreightForm = document.getElementById('seaFreightForm');
+            const calculationSpinner = document.getElementById('calculationSpinner');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const calculationFormContainer = document.getElementById('calculationFormContainer');
+            const carrierTableBody = document.getElementById('carrierTableBody');
+            const backToFormButton = document.getElementById('backToFormButton');
+            const alertContainer = document.getElementById('alertContainer');
+            
+            // API URL
+            const apiUrl = 'http://5001-ivxbzpkthh4r6tddtvdn8-ec71e850.manus.computer';
+            
+            // Обработчик отправки формы
+            seaFreightForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Показываем спиннер загрузки
+                calculationSpinner.style.display = 'block';
+                
+                // Собираем данные формы
+                const formData = {
+                    origin: document.getElementById('origin').value,
+                    destination: document.getElementById('destination').value,
+                    cargoType: document.getElementById('cargoType').value,
+                    containerType: document.getElementById('containerType').value,
+                    weight: document.getElementById('weight').value,
+                    volume: document.getElementById('volume').value,
+                    goodsValue: document.getElementById('goodsValue').value || 0,
+                    incoterms: document.getElementById('incoterms').value,
+                    dangerous: document.getElementById('dangerous').value,
+                    insurance: document.getElementById('insurance').value,
+                    customs: document.getElementById('customs').value,
+                    additionalInfo: document.getElementById('additionalInfo').value,
+                    name: document.getElementById('name').value,
+                    company: document.getElementById('company').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value
+                };
+                
+                // Отправляем запрос на API
+                fetch(`${apiUrl}/api/sea-freight/calculate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Скрываем спиннер загрузки
+                    calculationSpinner.style.display = 'none';
+                    
+                    if (data.error) {
+                        // Показываем сообщение об ошибке
+                        showAlert('danger', data.error);
+                    } else if (data.success) {
+                        // Показываем результаты
+                        showResults(data.results);
+                    }
+                })
+                .catch(error => {
+                    // Скрываем спиннер загрузки
+                    calculationSpinner.style.display = 'none';
+                    
+                    // Показываем сообщение об ошибке
+                    showAlert('danger', 'Произошла ошибка при расчете. Пожалуйста, попробуйте позже.');
+                    console.error('Error:', error);
+                });
+            });
+            
+            // Обработчик кнопки "Вернуться к форме"
+            backToFormButton.addEventListener('click', function() {
+                resultsContainer.style.display = 'none';
+                calculationFormContainer.style.display = 'block';
+            });
+            
+            // Функция для отображения результатов
+            function showResults(results) {
+                // Очищаем таблицу результатов
+                carrierTableBody.innerHTML = '';
+                
+                // Добавляем результаты в таблицу
+                results.forEach((result, index) => {
+                    const row = document.createElement('tr');
+                    
+                    // Добавляем класс для лучшей ставки
+                    if (index === 0) {
+                        row.classList.add('best-rate');
+                    }
+                    
+                    row.innerHTML = `
+                        <td>${result.carrier}</td>
+                        <td>$${result.cost.toFixed(2)}</td>
+                        <td>${result.transit_time} дней</td>
+                        <td>${index === 0 ? '<span class="badge">Лучшая цена</span>' : ''}</td>
+                    `;
+                    
+                    carrierTableBody.appendChild(row);
+                });
+                
+                // Показываем контейнер с результатами
+                calculationFormContainer.style.display = 'none';
+                resultsContainer.style.display = 'block';
+            }
+            
+            // Функция для отображения уведомлений
+            function showAlert(type, message) {
+                const alert = document.createElement('div');
+                alert.className = `alert alert-${type}`;
+                alert.textContent = message;
+                
+                // Очищаем предыдущие уведомления
+                alertContainer.innerHTML = '';
+                
+                // Добавляем новое уведомление
+                alertContainer.appendChild(alert);
+                
+                // Автоматически скрываем уведомление через 5 секунд
+                setTimeout(() => {
+                    alert.remove();
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование API калькулятора морских ставок</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #0066cc;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .test-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .test-input {
+            margin-bottom: 15px;
+        }
+        .test-input label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .test-input input, .test-input textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .test-button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .test-button:hover {
+            background-color: #0055aa;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+            white-space: pre-wrap;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Тестирование API калькулятора морских ставок</h1>
+        
+        <div class="test-section">
+            <div class="test-title">Тест 1: Верификация email</div>
+            <div class="test-input">
+                <label for="verifyEmail">Email для верификации:</label>
+                <input type="email" id="verifyEmail" placeholder="Введите email">
+            </div>
+            <button class="test-button" id="verifyEmailBtn">Запросить верификацию</button>
+            <div class="result" id="verifyEmailResult"></div>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">Тест 2: Подтверждение кода верификации</div>
+            <div class="test-input">
+                <label for="confirmEmail">Email:</label>
+                <input type="email" id="confirmEmail" placeholder="Введите email">
+            </div>
+            <div class="test-input">
+                <label for="confirmCode">Код подтверждения:</label>
+                <input type="text" id="confirmCode" placeholder="Введите код подтверждения">
+            </div>
+            <button class="test-button" id="confirmCodeBtn">Подтвердить код</button>
+            <div class="result" id="confirmCodeResult"></div>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">Тест 3: Расчет стоимости морской перевозки</div>
+            <div class="test-input">
+                <label for="calcEmail">Email (должен быть верифицирован):</label>
+                <input type="email" id="calcEmail" placeholder="Введите верифицированный email">
+            </div>
+            <div class="test-input">
+                <label for="calcOrigin">Порт отправления:</label>
+                <input type="text" id="calcOrigin" placeholder="Например: Шанхай, Китай" value="Шанхай, Китай">
+            </div>
+            <div class="test-input">
+                <label for="calcDestination">Порт назначения:</label>
+                <input type="text" id="calcDestination" placeholder="Например: Роттердам, Нидерланды" value="Роттердам, Нидерланды">
+            </div>
+            <div class="test-input">
+                <label for="calcCargoType">Тип груза:</label>
+                <select id="calcCargoType">
+                    <option value="fcl">FCL (полный контейнер)</option>
+                    <option value="lcl">LCL (сборный груз)</option>
+                    <option value="bulk">Навалочный груз</option>
+                    <option value="ro-ro">Ро-Ро (автомобили, техника)</option>
+                    <option value="dangerous">Опасный груз</option>
+                </select>
+            </div>
+            <div class="test-input">
+                <label for="calcContainerType">Тип контейнера:</label>
+                <select id="calcContainerType">
+                    <option value="20dv">20' DV (стандартный)</option>
+                    <option value="40dv">40' DV (стандартный)</option>
+                    <option value="40hc">40' HC (высокий)</option>
+                    <option value="none">Не требуется (LCL/навалочный)</option>
+                </select>
+            </div>
+            <div class="test-input">
+                <label for="calcWeight">Вес груза (кг):</label>
+                <input type="number" id="calcWeight" placeholder="Например: 5000" value="5000">
+            </div>
+            <div class="test-input">
+                <label for="calcVolume">Объем груза (м³):</label>
+                <input type="number" id="calcVolume" placeholder="Например: 30" value="30">
+            </div>
+            <button class="test-button" id="calculateBtn">Рассчитать стоимость</button>
+            <div class="result" id="calculateResult"></div>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">Тест 4: Попытка расчета с неверифицированным email</div>
+            <div class="test-input">
+                <label for="unverifiedEmail">Неверифицированный Email:</label>
+                <input type="email" id="unverifiedEmail" placeholder="Введите неверифицированный email">
+            </div>
+            <button class="test-button" id="unverifiedBtn">Попытка расчета</button>
+            <div class="result" id="unverifiedResult"></div>
+        </div>
+    </div>
+
+    <script>
+        // API URL
+        const API_BASE_URL = 'http://localhost:5000/api';
+        
+        // Тест 1: Верификация email
+        document.getElementById('verifyEmailBtn').addEventListener('click', async function() {
+            const email = document.getElementById('verifyEmail').value;
+            const resultDiv = document.getElementById('verifyEmailResult');
+            
+            if (!email) {
+                resultDiv.innerHTML = '<span class="error">Пожалуйста, введите email</span>';
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/sea-freight/verify-email`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+                
+                const data = await response.json();
+                
+                if (data.verified) {
+                    resultDiv.innerHTML = '<span class="success">Email уже верифицирован!</span>';
+                } else {
+                    resultDiv.innerHTML = `<span class="success">Код верификации отправлен.</span>\nКод: ${data.verification_code}`;
+                    // Автоматически заполнить поля для следующего теста
+                    document.getElementById('confirmEmail').value = email;
+                    document.getElementById('confirmCode').value = data.verification_code;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">Ошибка: ${error.message}</span>`;
+            }
+        });
+        
+        // Тест 2: Подтверждение кода верификации
+        document.getElementById('confirmCodeBtn').addEventListener('click', async function() {
+            const email = document.getElementById('confirmEmail').value;
+            const code = document.getElementById('confirmCode').value;
+            const resultDiv = document.getElementById('confirmCodeResult');
+            
+            if (!email || !code) {
+                resultDiv.innerHTML = '<span class="error">Пожалуйста, введите email и код подтверждения</span>';
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/sea-freight/confirm-verification`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, code })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.innerHTML = '<span class="success">Email успешно верифицирован!</span>';
+                    // Автоматически заполнить поле для следующего теста
+                    document.getElementById('calcEmail').value = email;
+                } else {
+                    resultDiv.innerHTML = `<span class="error">Ошибка: ${data.error}</span>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">Ошибка: ${error.message}</span>`;
+            }
+        });
+        
+        // Тест 3: Расчет стоимости морской перевозки
+        document.getElementById('calculateBtn').addEventListener('click', async function() {
+            const email = document.getElementById('calcEmail').value;
+            const origin = document.getElementById('calcOrigin').value;
+            const destination = document.getElementById('calcDestination').value;
+            const cargoType = document.getElementById('calcCargoType').value;
+            const containerType = document.getElementById('calcContainerType').value;
+            const weight = document.getElementById('calcWeight').value;
+            const volume = document.getElementById('calcVolume').value;
+            const resultDiv = document.getElementById('calculateResult');
+            
+            if (!email || !origin || !destination || !weight || !volume) {
+                resultDiv.innerHTML = '<span class="error">Пожалуйста, заполните все обязательные поля</span>';
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/sea-freight/calculate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email,
+                        origin,
+                        destination,
+                        cargoType,
+                        containerType,
+                        weight,
+                        volume,
+                        name: 'Тестовый пользователь',
+                        company: 'Тестовая компания',
+                        phone: '+1234567890',
+                        incoterms: 'fob',
+                        dangerous: 'no',
+                        insurance: 'no',
+                        customs: 'no'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    let resultHTML = '<span class="success">Расчет успешно выполнен!</span>\n\n';
+                    resultHTML += 'Результаты расчета:\n\n';
+                    
+                    data.results.forEach((rate, index) => {
+                        resultHTML += `${index + 1}. ${rate.carrier}: ${rate.cost} USD, ${rate.transit_time} дней\n`;
+                    });
+                    
+                    resultDiv.innerHTML = resultHTML;
+                } else {
+                    resultDiv.innerHTML = `<span class="error">Ошибка: ${data.error}</span>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">Ошибка: ${error.message}</span>`;
+            }
+        });
+        
+        // Тест 4: Попытка расчета с неверифицированным email
+        document.getElementById('unverifiedBtn').addEventListener('click', async function() {
+            const email = document.getElementById('unverifiedEmail').value;
+            const resultDiv = document.getElementById('unverifiedResult');
+            
+            if (!email) {
+                resultDiv.innerHTML = '<span class="error">Пожалуйста, введите email</span>';
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/sea-freight/calculate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email,
+                        origin: 'Шанхай, Китай',
+                        destination: 'Роттердам, Нидерланды',
+                        cargoType: 'fcl',
+                        containerType: '20dv',
+                        weight: 5000,
+                        volume: 30,
+                        name: 'Тестовый пользователь',
+                        company: 'Тестовая компания',
+                        phone: '+1234567890',
+                        incoterms: 'fob',
+                        dangerous: 'no',
+                        insurance: 'no',
+                        customs: 'no'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.status === 403) {
+                    resultDiv.innerHTML = '<span class="success">Тест пройден! Система правильно отклонила запрос с неверифицированным email.</span>\n\n' +
+                                         `Сообщение об ошибке: ${data.error}`;
+                } else if (data.success) {
+                    resultDiv.innerHTML = '<span class="error">Тест не пройден! Система не должна была принимать запрос с неверифицированным email.</span>';
+                } else {
+                    resultDiv.innerHTML = `<span class="error">Ошибка: ${data.error}</span>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">Ошибка: ${error.message}</span>`;
+            }
+        });
+    </script>
+</body>
+</html>

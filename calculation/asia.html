@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расчет стоимости перевозок в Центральную Азию - TSP Transport OÜ</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/button-styles.css">
+    <link rel="stylesheet" href="../css/calculation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="mailto:transport@tspgrupp.ee"><i class="fas fa-envelope"></i> transport@tspgrupp.ee</a>
+                    <a href="tel:+37266644400"><i class="fas fa-phone"></i> +372 666 4400</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-main">
+                <div class="logo">
+                    <a href="../index.html">
+                        <img src="../images/optimized/logo.png" alt="TSP Transport OÜ Logo">
+                    </a>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html#home">Главная</a></li>
+                        <li><a href="../index.html#about">О компании</a></li>
+                        <li><a href="../index.html#services">Услуги</a></li>
+                        <li><a href="../index.html#advantages">Преимущества</a></li>
+                        <li><a href="../index.html#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <section class="calculation-section">
+        <div class="container">
+            <div class="section-title">
+                <h1>Расчет стоимости перевозок в Центральную Азию</h1>
+                <p>Заполните форму ниже для получения предварительного расчета стоимости перевозки</p>
+            </div>
+            
+            <div class="calculation-form-container">
+                <form class="calculation-form" id="asiaForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="origin">Пункт отправления</label>
+                            <input type="text" id="origin" name="origin" required placeholder="Например: Таллинн, Эстония">
+                        </div>
+                        <div class="form-group">
+                            <label for="destination">Пункт назначения</label>
+                            <select id="destination" name="destination" required>
+                                <option value="" disabled selected>Выберите страну назначения</option>
+                                <option value="kazakhstan">Казахстан</option>
+                                <option value="uzbekistan">Узбекистан</option>
+                                <option value="tajikistan">Таджикистан</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="destinationCity">Город назначения</label>
+                            <input type="text" id="destinationCity" name="destinationCity" required placeholder="Например: Алматы">
+                        </div>
+                        <div class="form-group">
+                            <label for="cargoType">Тип груза</label>
+                            <select id="cargoType" name="cargoType" required>
+                                <option value="" disabled selected>Выберите тип груза</option>
+                                <option value="general">Генеральный груз</option>
+                                <option value="bulk">Сыпучий груз</option>
+                                <option value="oversized">Негабаритный груз</option>
+                                <option value="dangerous">Опасный груз</option>
+                                <option value="temperature">Температурный режим</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="weight">Вес груза (кг)</label>
+                            <input type="number" id="weight" name="weight" required min="1" placeholder="Например: 5000">
+                        </div>
+                        <div class="form-group">
+                            <label for="volume">Объем груза (м³)</label>
+                            <input type="number" id="volume" name="volume" required min="0.1" step="0.1" placeholder="Например: 30">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="transportType">Тип транспорта</label>
+                            <select id="transportType" name="transportType" required>
+                                <option value="" disabled selected>Выберите тип транспорта</option>
+                                <option value="road">Автомобильный</option>
+                                <option value="rail">Железнодорожный</option>
+                                <option value="multimodal">Мультимодальный</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="loadType">Тип загрузки</label>
+                            <select id="loadType" name="loadType" required>
+                                <option value="" disabled selected>Выберите тип загрузки</option>
+                                <option value="ftl">FTL (полная загрузка)</option>
+                                <option value="ltl">LTL (частичная загрузка)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="deliveryDate">Желаемая дата доставки</label>
+                            <input type="date" id="deliveryDate" name="deliveryDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="customs">Таможенное оформление</label>
+                            <select id="customs" name="customs">
+                                <option value="no">Не требуется</option>
+                                <option value="export">Экспорт</option>
+                                <option value="import">Импорт</option>
+                                <option value="transit">Транзит</option>
+                                <option value="full" selected>Полное сопровождение</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="insurance">Страхование груза</label>
+                            <select id="insurance" name="insurance">
+                                <option value="no">Не требуется</option>
+                                <option value="basic">Базовое</option>
+                                <option value="full" selected>Полное</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="documents">Подготовка документов</label>
+                            <select id="documents" name="documents">
+                                <option value="no">Не требуется</option>
+                                <option value="basic">Базовый пакет</option>
+                                <option value="full" selected>Полный пакет</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="additionalInfo">Дополнительная информация</label>
+                        <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Укажите любую дополнительную информацию, которая может быть важна для расчета"></textarea>
+                    </div>
+                    
+                    <div class="form-row contact-info-row">
+                        <h3>Контактная информация</h3>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Компания</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-submit">Рассчитать стоимость</button>
+                    </div>
+                </form>
+                
+                <div class="calculation-result" id="calculationResult" style="display: none;">
+                    <h3>Результаты расчета</h3>
+                    <div class="result-content">
+                        <p>Предварительная стоимость перевозки: <span id="estimatedCost">0</span> EUR</p>
+                        <p>Ориентировочное время доставки: <span id="estimatedTime">0</span> дней</p>
+                        <p>Примечание: Данный расчет является предварительным. Для получения точной стоимости наш менеджер свяжется с вами в ближайшее время.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TSP Transport OÜ</h3>
+                    <p>Компания специализируется на грузоперевозках по автодорогам, включая перевозку сыпучих грузов. Наша цель - предоставление высококачественных логистических услуг.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Навигация</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#home">Главная</a></li>
+                        <li><a href="../index.html#about">О компании</a></li>
+                        <li><a href="../index.html#services">Услуги</a></li>
+                        <li><a href="../index.html#advantages">Преимущества</a></li>
+                        <li><a href="../index.html#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Harju maakond, Tallinn, Lasnamäe linnaosa, Lasnamäe tn 20-17, 11416</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>transport@tspgrupp.ee</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+372 666 4400</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TSP Transport OÜ. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Простой скрипт для мобильного меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+            
+            // Закрытие меню при клике на ссылку
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                });
+            });
+            
+            // Обработка отправки формы
+            const calculationForm = document.getElementById('asiaForm');
+            const calculationResult = document.getElementById('calculationResult');
+            const estimatedCost = document.getElementById('estimatedCost');
+            const estimatedTime = document.getElementById('estimatedTime');
+            
+            calculationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Имитация расчета (в реальном проекте здесь будет API-запрос)
+                const weight = parseFloat(document.getElementById('weight').value);
+                const volume = parseFloat(document.getElementById('volume').value);
+                const transportType = document.getElementById('transportType').value;
+                const destination = document.getElementById('destination').value;
+                
+                // Базовые расстояния до стран Центральной Азии (в км)
+                const baseDistances = {
+                    'kazakhstan': 4500,
+                    'uzbekistan': 5500,
+                    'tajikistan': 6000
+                };
+                
+                // Получаем базовое расстояние для выбранной страны
+                const distance = baseDistances[destination] || 5000;
+                
+                // Простая формула для демонстрации
+                let cost = weight * 0.4 + volume * 10 + distance * 0.6;
+                let time = 0;
+                
+                // Корректировка в зависимости от типа транспорта
+                switch(transportType) {
+                    case 'road':
+                        cost *= 1.2;
+                        time = Math.ceil(distance / 400); // Примерно 400 км в день
+                        break;
+                    case 'rail':
+                        cost *= 0.9;
+                        time = Math.ceil(distance / 700) + 5; // Примерно 700 км в день + 5 дней на перегрузки
+                        break;
+                    case 'multimodal':
+                        cost *= 1.1;
+                        time = Math.ceil(distance / 600) + 3; // Примерно 600 км в день + 3 дня на перегрузки
+                        break;
+                    default:
+                        cost *= 1.0;
+                        time = Math.ceil(distance / 500) + 2; // По умолчанию
+                }
+                
+                // Корректировка в зависимости от страны назначения
+                switch(destination) {
+                    case 'kazakhstan':
+                        cost *= 1.0;
+                        break;
+                    case 'uzbekistan':
+                        cost *= 1.2;
+                        time += 2; // Дополнительное время на таможенные процедуры
+                        break;
+                    case 'tajikistan':
+                        cost *= 1.4;
+                        time += 3; // Дополнительное время на таможенные процедуры
+                        break;
+                    default:
+                        cost *= 1.0;
+                }
+                
+                // Дополнительные услуги
+                if (document.getElementById('customs').value === 'full') {
+                    cost += 300;
+                } else if (document.getElementById('customs').value !== 'no') {
+                    cost += 150;
+                    time += 1;
+                }
+                
+                if (document.getElementById('insurance').value === 'basic') {
+                    cost += 100;
+                } else if (document.getElementById('insurance').value === 'full') {
+                    cost += 250;
+                }
+                
+                if (document.getElementById('documents').value === 'basic') {
+                    cost += 100;
+                } else if (document.getElementById('documents').value === 'full') {
+                    cost += 200;
+                }
+                
+                // Округление и отображение результатов
+                estimatedCost.textContent = Math.round(cost);
+                estimatedTime.textContent = time;
+                
+                // Показ результатов
+                calculationResult.style.display = 'block';
+                
+                // Прокрутка к результатам
+                calculationResult.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
