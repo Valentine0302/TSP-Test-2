@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, jsonify, abort, send_from_directory, redirect, url_for
 from flask_cors import CORS
 import json
 import os
@@ -13,7 +13,10 @@ from datetime import datetime
 import random
 import argparse
 
-app = Flask(__name__)
+# Create Flask app with static files configuration
+app = Flask(__name__, 
+            static_url_path='', 
+            static_folder='../../')
 CORS(app)  # Enable CORS for all routes
 
 # Database setup
@@ -353,6 +356,31 @@ def save_calculation(data, result):
     conn.close()
 
 # API Routes
+@app.route('/')
+def index():
+    """Root route - redirect to index.html"""
+    return send_from_directory('../../', 'index.html')
+
+@app.route('/index.html')
+def serve_index():
+    """Serve the index.html file"""
+    return send_from_directory('../../', 'index.html')
+
+@app.route('/calculation/<path:path>')
+def serve_calculation(path):
+    """Serve calculation pages"""
+    return send_from_directory('../../calculation', path)
+
+@app.route('/css/<path:path>')
+def serve_css(path):
+    """Serve CSS files"""
+    return send_from_directory('../../css', path)
+
+@app.route('/images/<path:path>')
+def serve_images(path):
+    """Serve image files"""
+    return send_from_directory('../../images', path)
+
 @app.route('/api/health', methods=['GET'])
 def api_health():
     """Health check endpoint"""
