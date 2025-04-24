@@ -4,3 +4,7 @@ requests==2.26.0
 dnspython==2.1.0
 gunicorn==20.1.0
 werkzeug==2.0.1
+jinja2==3.0.1
+itsdangerous==2.0.1
+click==8.0.1
+markupsafe==2.0.1
