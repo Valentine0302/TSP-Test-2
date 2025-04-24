@@ -1,0 +1,47 @@
+[
+    {
+        "name": "multimodal_transport",
+        "title": "Мультимодальные перевозки по всему миру",
+        "description": "FTL/LTL, сборные грузы, генеральные грузы и негабаритные грузы",
+        "prompts": [
+            "Anton Pieck style illustration of multimodal transportation with ships, trucks and trains in blue, black and white colors of Estonian flag, vintage detailed drawing",
+            "Anton Pieck style detailed drawing of global logistics network with cargo ships, trucks and trains in blue and black colors on white background, vintage illustration",
+            "Vintage Anton Pieck style illustration of worldwide freight transportation with detailed ships, trucks and containers in Estonian flag colors (blue, black, white)"
+        ],
+        "image_files": [
+            "multimodal_transport_1.jpg",
+            "multimodal_transport_2.jpg",
+            "multimodal_transport_3.jpg"
+        ]
+    },
+    {
+        "name": "europe_transport",
+        "title": "Автоперевозки по Европе любой сложности",
+        "description": "FTL/LTL, негабаритные и тяжеловесные",
+        "prompts": [
+            "Anton Pieck style illustration of European truck transportation on winding roads through picturesque towns in blue, black and white colors, vintage detailed drawing",
+            "Vintage Anton Pieck style drawing of heavy cargo transportation trucks on European highways in Estonian flag colors (blue, black, white), detailed illustration",
+            "Anton Pieck style detailed illustration of freight trucks delivering cargo across European cities in blue and black colors on white background, vintage drawing"
+        ],
+        "image_files": [
+            "europe_transport_1.jpg",
+            "europe_transport_2.jpg",
+            "europe_transport_3.jpg"
+        ]
+    },
+    {
+        "name": "asia_transport",
+        "title": "Перевозки грузов в Центральную Азию",
+        "description": "Казахстан, Узбекистан, Таджикистан",
+        "prompts": [
+            "Anton Pieck style illustration of Silk Road transportation with trucks on Central Asian routes in blue, black and white colors of Estonian flag, vintage detailed drawing",
+            "Vintage Anton Pieck style drawing of logistics transportation to Kazakhstan, Uzbekistan and Tajikistan in Estonian flag colors (blue, black, white), detailed illustration",
+            "Anton Pieck style detailed illustration of freight delivery across Central Asian landscapes with mountains and desert roads in blue and black colors, vintage drawing"
+        ],
+        "image_files": [
+            "asia_transport_1.jpg",
+            "asia_transport_2.jpg",
+            "asia_transport_3.jpg"
+        ]
+    }
+]

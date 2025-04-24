@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSP Transport OÜ - Транспортная компания в Эстонии</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/button-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="mailto:transport@tspgrupp.ee"><i class="fas fa-envelope"></i> transport@tspgrupp.ee</a>
+                    <a href="tel:+37266644400"><i class="fas fa-phone"></i> +372 666 4400</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-main">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/optimized/enhanced_logo.png" alt="TSP Transport OÜ Logo">
+                    </a>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#about">О компании</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#advantages">Преимущества</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                        <li><a href="image_variants.html">Варианты изображений</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Надежные международные грузоперевозки</h1>
+                <p>TSP Transport OÜ предлагает высококачественные логистические услуги всеми видами транспорта по всему миру</p>
+                <a href="#contact" class="btn">Связаться с нами</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>О компании</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>TSP Transport OÜ - ваш надежный логистический партнер</h3>
+                    <p>Мы молодая компания, но здесь работают опытные профессионалы. Мы небольшая компания и поэтому дорожим каждым клиентом.</p>
+                    <p>Мы любим сложные задачи и всегда находим оптимальные решения для наших клиентов. Наша команда профессионалов готова решить любые логистические задачи, с которыми вы сталкиваетесь.</p>
+                    <p>Компания TSP Transport OÜ зарегистрирована в Эстонии и работает как на внутреннем рынке, так и на международных маршрутах, обеспечивая надежную и своевременную доставку грузов.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/600x400" alt="TSP Transport OÜ">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши услуги</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/services/multimodal_transport_anton_pieck.jpg" alt="Мультимодальные перевозки по всему миру">
+                    </div>
+                    <div class="service-content">
+                        <h3>Мультимодальные перевозки по всему миру</h3>
+                        <p>FTL/LTL, сборные грузы, генеральные грузы и негабаритные грузы</p>
+                        <button class="calc-button" onclick="navigateToCalculation('multimodal')">Рассчитать стоимость</button>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/services/europe_transport_anton_pieck.jpg" alt="Автоперевозки по Европе">
+                    </div>
+                    <div class="service-content">
+                        <h3>Перевозки любой сложности по Европе</h3>
+                        <p>FTL/LTL, негабаритные и тяжеловесные</p>
+                        <button class="calc-button" onclick="navigateToCalculation('europe')">Рассчитать стоимость</button>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/services/asia_transport_anton_pieck.jpg" alt="Перевозки в Центральную Азию">
+                    </div>
+                    <div class="service-content">
+                        <h3>Перевозки грузов в Центральную Азию</h3>
+                        <p>Казахстан, Узбекистан, Таджикистан</p>
+                        <button class="calc-button" onclick="navigateToCalculation('asia')">Рассчитать стоимость</button>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/services/sea_freight_anton_pieck.jpg" alt="Морские грузоперевозки">
+                        <div class="new-badge">Новинка</div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Морские грузоперевозки</h3>
+                        <p>FCL, LCL, навалочные грузы, Ро-Ро</p>
+                        <button class="calc-button" onclick="navigateToCalculation('sea_freight')">Рассчитать стоимость</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section id="advantages" class="advantages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши преимущества</h2>
+            </div>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Открытость и ответственность</h3>
+                    <p>Мы всегда открыты для диалога и берем на себя полную ответственность за выполнение взятых обязательств перед клиентами.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Индивидуальный подход</h3>
+                    <p>Мы разрабатываем индивидуальные логистические решения для каждого клиента, учитывая специфику его бизнеса и требования к перевозкам.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма обратной связи -->
+    <section id="contact" class="contact-form-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Свяжитесь с нами</h2>
+            </div>
+            <div class="contact-form-container">
+                <form class="contact-form" action="mailto:transport@tspgrupp.ee" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Компания</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-submit">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TSP Transport OÜ</h3>
+                    <p>Компания специализируется на грузоперевозках по автодорогам, включая перевозку сыпучих грузов. Наша цель - предоставление высококачественных логистических услуг.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Навигация</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#about">О компании</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#advantages">Преимущества</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Harju maakond, Tallinn, Lasnamäe linnaosa, Lasnamäe tn 20-17, 11416</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>transport@tspgrupp.ee</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+372 666 4400</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TSP Transport OÜ. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Простой скрипт для мобильного меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+            
+            // Закрытие меню при клике на ссылку
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                });
+            });
+        });
+    </script>
+    <script src="js/calculation.js"></script>
+</body>
+</html>

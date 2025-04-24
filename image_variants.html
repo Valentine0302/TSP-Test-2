@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Варианты изображений для сайта - TSP Transport OÜ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/button-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .image-variants-section {
+            padding: 50px 0;
+        }
+        
+        .image-variants-container {
+            margin-top: 30px;
+        }
+        
+        .service-variants {
+            margin-bottom: 50px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .service-title {
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+        }
+        
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .variant-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .variant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .variant-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .variant-info {
+            padding: 15px;
+        }
+        
+        .variant-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+        
+        .variant-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .select-button {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        
+        .select-button:hover {
+            background-color: #0056b3;
+        }
+        
+        .back-to-home {
+            display: inline-block;
+            margin-top: 30px;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .back-to-home:hover {
+            background-color: #0056b3;
+        }
+        
+        .note {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0d6efd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .note p {
+            margin: 0;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .variants-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .variants-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="mailto:transport@tspgrupp.ee"><i class="fas fa-envelope"></i> transport@tspgrupp.ee</a>
+                    <a href="tel:+37266644400"><i class="fas fa-phone"></i> +372 666 4400</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-main">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/optimized/enhanced_logo.png" alt="TSP Transport OÜ Logo">
+                    </a>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html#home">Главная</a></li>
+                        <li><a href="index.html#about">О компании</a></li>
+                        <li><a href="index.html#services">Услуги</a></li>
+                        <li><a href="index.html#advantages">Преимущества</a></li>
+                        <li><a href="index.html#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <section class="image-variants-section">
+        <div class="container">
+            <div class="section-title">
+                <h1>Варианты изображений для сайта</h1>
+                <p>Выберите наиболее подходящие изображения для каждого раздела услуг</p>
+                <div class="note">
+                    <p><strong>Примечание:</strong> Представлены новые стилизованные иллюстрации в цветах эстонского флага (синий, черный, белый). Эти изображения созданы в минималистичном стиле, вдохновленном работами Anton Pieck, с использованием характерных для него элементов: винтажная атмосфера, мягкие линии и текстуры.</p>
+                </div>
+            </div>
+            
+            <div class="image-variants-container">
+                <!-- Мультимодальные перевозки -->
+                <div class="service-variants">
+                    <h2 class="service-title">Мультимодальные перевозки по всему миру</h2>
+                    <div class="variants-grid">
+                        <!-- Вариант 1 -->
+                        <div class="variant-card">
+                            <img src="images/services/multimodal_transport_1.jpg" alt="Мультимодальные перевозки - Вариант 1" class="variant-image">
+                            <div class="variant-info">
+                                <h3 class="variant-title">Вариант 1</h3>
+                                <p class="variant-description">Схематичное изображение корабля и грузовика в цветах эстонского флага (синий, черный, белый).</p>
+                                <button class="select-button">Выбрать этот вариант</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Вариант 2 -->
+                        <div class="variant-card">
+                            <img src="images/services/multimodal_transport_2.jpg" alt="Мультимодальные перевозки - Вариант 2" class="variant-image">
+                            <div class="variant-info">
+                                <h3 class="variant-title">Вариант 2</h3>
+                                <p class="variant-description">Схематичное изображение различных видов транспорта в цветах эстонского флага (синий, черный, белый).</p>
+                                <button class="select-button">Выбрать этот вариант</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Новый вариант в стиле Anton Pieck -->
+                        <div class="variant-card">
+                            <img src="images/services/multimodal_transport_anton_pieck.jpg" alt="Мультимодальные перевозки - Стиль Anton Pieck" class="variant-image">
+                            <div class="variant-info">
+                                <h3 class="variant-title">Стиль Anton Pieck</h3>
+                                <p class="variant-description">Стилизованная иллюстрация порта с кораблями, поездами и грузовиками в цветах эстонского флага, выполненная в минималистичном стиле, вдохновленном работами Anton Pieck.</p>
+                                <button class="select-button">Выбрать этот вариант</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Перевозки по Европе -->
+                <div class="service-variants">
+                    <h2 class="service-title">Перевозки любой сложности по Европе</h2>
+                    <div class="variants-grid">
+                        <!-- Вариант 1 -->
+                        <div class="variant-card">
+                            <img src="images/services/europe_transport_1.jpg" alt="Перевозки по Европе - Вариант 1" class="variant-image">
+                            <div class="variant-info">
+                                <h3 class="variant-title">Вариант 1</h3>
+                                <p class="variant-description">Схематичное изображение грузовика на дороге в цветах эстонского флага (синий, черный, белый).</p>
+                                <button class="select-button">Выбрать этот вариант</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Вариант 2 -->
+                        <div class="variant-card">
+                            <img src="images/services/europe_transport_2.jpg" alt="Перевозки по Европе - Вариант 2" class="variant-image">
+                            <div class="variant-info">
+                                <h3 class="variant-title">Вариант 2</h3>
+                                <p class="variant-description">Схематичное изображение маршрутов перевозок по Европе в цветах эстонского флага (синий, черный, белый).</p>
+                                <button class="select-button">Выбрать этот вариант</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Новый вариант в стиле Anton Pieck -->
+                        <div class="variant-card">
+                            <img src="images/services/europe_transport_anton_pieck.jpg" alt="Перевозки по Европе - Стиль Anton Pieck" class="variant-image">
+                            <div class="variant-info">
+                                <h3 class="variant-title">Стиль Anton Pieck</h3>
+                                <p class="variant-description">Стилизованная иллюстрация европейского городского пейзажа с винтажными грузовиками и поездами в цветах эстонского флага, выполненная в минималистичном стиле, вдохновленном работами Anton Pieck.</p>
+                                <button class="select-button">Выбрать этот вариант</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Перевозки в Центральную Азию -->
+                <div class="service-variants">
+                    <h2 class="service-title">Перевозки грузов в Центральную Азию</h2>
+                    <div class="variants-grid">
+                        <!-- Вариант 1 -->
+                        <div class="variant-card">
+                            <img src="images/services/asia_transport_1.jpg" alt="Перевозки в Центральную Азию - Вариант 1" class="variant-image">
+                            <div class="variant-info">
+                                <h3 class="variant-title">Вариант 1</h3>
+                                <p class="variant-description">Схематичное изображение грузовиков на фоне гор в цветах эстонского флага (синий, черный, белый).</p>
+                                <button class="select-button">Выбрать этот вариант</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Вариант 2 -->
+                        <div class="variant-card">
+                            <img src="images/services/asia_transport_2.jpg" alt="Перевозки в Центральную Азию - Вариант 2" class="variant-image">
+                            <div class="variant-info">
+                                <h3 class="variant-title">Вариант 2</h3>
+                                <p class="variant-description">Схематичное изображение маршрутов перевозок по Центральной Азии в цветах эстонского флага (синий, черный, белый).</p>
+                                <button class="select-button">Выбрать этот вариант</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Новый вариант в стиле Anton Pieck -->
+                        <div class="variant-card">
+                            <img src="images/services/asia_transport_anton_pieck.jpg" alt="Перевозки в Центральную Азию - Стиль Anton Pieck" class="variant-image">
+                            <div class="variant-info">
+                                <h3 class="variant-title">Стиль Anton Pieck</h3>
+                                <p class="variant-description">Стилизованная иллюстрация центральноазиатского пейзажа с горами, Шелковым путем и караванами в цветах эстонского флага, выполненная в минималистичном стиле, вдохновленном работами Anton Pieck.</p>
+                                <button class="select-button">Выбрать этот вариант</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="index.html" class="back-to-home">Вернуться на главную</a>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TSP Transport OÜ</h3>
+                    <p>Компания специализируется на грузоперевозках по автодорогам, включая перевозку сыпучих грузов. Наша цель - предоставление высококачественных логистических услуг.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Навигация</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#home">Главная</a></li>
+                        <li><a href="index.html#about">О компании</a></li>
+                        <li><a href="index.html#services">Услуги</a></li>
+                        <li><a href="index.html#advantages">Преимущества</a></li>
+                        <li><a href="index.html#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Harju maakond, Tallinn, Lasnamäe linnaosa, Lasnamäe tn 20-17, 11416</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>transport@tspgrupp.ee</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+372 666 4400</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TSP Transport OÜ. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Простой скрипт для мобильного меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+            
+            // Закрытие меню при клике на ссылку
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                });
+            });
+            
+            // Обработка кнопок выбора
+            const selectButtons = document.querySelectorAll('.select-button');
+            selectButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Вариант выбран! В реальном проекте здесь будет сохранение выбора.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
