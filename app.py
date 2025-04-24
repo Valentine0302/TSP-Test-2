@@ -1,4 +1,5 @@
- -*- coding: utf-8 -*-
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 from flask import Flask, request, jsonify, abort, send_from_directory
 from flask_cors import CORS
