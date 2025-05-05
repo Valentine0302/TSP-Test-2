@@ -118,7 +118,7 @@ header {
 }
 
 .logo img {
-    height: 60px;
+    height: 75px; /* Increased logo size */
     margin-right: 10px;
 }
 
@@ -168,7 +168,7 @@ nav ul li a:hover:after {
     display: flex;
     align-items: center;
     position: relative;
-    margin-top: 100px;
+    margin-top: 100px; /* Adjusted margin-top based on increased header height */
 }
 
 .hero:before {
@@ -256,10 +256,13 @@ section {
 
 .about-image {
     flex: 1;
+    text-align: center; /* Center image if smaller */
 }
 
 .about-image img {
-    width: 100%;
+    max-width: 100%; /* Ensure image scales down */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 400px; /* Limit max height */
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
@@ -267,7 +270,7 @@ section {
 /* Услуги */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Changed from auto-fit to force 2 columns */
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
 
@@ -276,6 +279,8 @@ section {
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Added for consistent height */
+    flex-direction: column; /* Added for consistent height */
 }
 
 .service-card:hover {
@@ -286,25 +291,51 @@ section {
 .service-image {
     height: 200px;
     overflow: hidden;
+    display: flex; /* Center image */
+    justify-content: center; /* Center image */
+    align-items: center; /* Center image */
+    background-color: #e9ecef; /* Light background for contain */
 }
 
 .service-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Reverted back */
+    width: auto; /* Adjust width automatically */
+    height: auto; /* Adjust height automatically */
+    max-width: 90%; /* Limit width */
+    max-height: 180px; /* Limit height */
+    object-fit: contain; /* Ensure image fits */
     transition: transform 0.3s ease;
 }
 
 .service-card:hover .service-image img {
-    transform: scale(1.1);
+    transform: scale(1.05); /* Slightly smaller hover effect */
 }
 
 .service-content {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow content to fill space */
 }
 
 .service-content h3 {
     margin-bottom: 10px;
+}
+
+.service-content p {
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allow paragraph to grow */
+    min-height: 40px; /* Adjusted minimum height for alignment */
+}
+
+.service-content .button-container { /* Added container for button and badge */
+    margin-top: auto; /* Push to bottom */
+    display: flex;
+    align-items: center;
+}
+
+.service-content .calc-button {
+    /* margin-top: auto; Removed */
+    align-self: flex-start;
 }
 
 /* Преимущества */
@@ -470,9 +501,13 @@ footer {
     .about-content {
         flex-direction: column;
     }
-    
+
     .hero h1 {
         font-size: 2.5rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Stack services on smaller screens */
     }
 }
 
@@ -480,53 +515,54 @@ footer {
     .header-main {
         padding: 10px 0;
     }
-    
+
     .mobile-menu-toggle {
         display: block;
     }
-    
+
     nav {
         position: fixed;
-        top: 100px;
+        top: 85px; /* Adjust based on header top height */
         left: -100%;
         width: 80%;
-        height: calc(100vh - 100px);
+        height: calc(100vh - 85px);
         background-color: var(--background-white);
         transition: left 0.3s ease;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         z-index: 999;
     }
-    
+
     nav.active {
         left: 0;
     }
-    
+
     nav ul {
         flex-direction: column;
         padding: 20px;
         gap: 15px;
     }
-    
+
     .hero {
         height: 500px;
+        margin-top: 85px; /* Adjust based on header top height */
     }
-    
+
     .hero h1 {
         font-size: 2rem;
     }
-    
+
     .hero p {
         font-size: 1rem;
     }
-    
+
     .contact-form {
         grid-template-columns: 1fr;
     }
-    
+
     .form-group.full-width {
         grid-column: span 1;
     }
-    
+
     .form-submit {
         grid-column: span 1;
     }
@@ -536,11 +572,11 @@ footer {
     .header-top .container {
         justify-content: center;
     }
-    
+
     .hero {
         height: 400px;
     }
-    
+
     section {
         padding: 60px 0;
     }
@@ -559,38 +595,6 @@ footer {
     font-size: 14px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-
-/* Стили для карточек услуг */
-.service-image {
-    position: relative;
-}
-
-    max-height: 100%; /* Ensure image doesn't overflow container */
-
-/* Ensure consistent height for description and push button down */
-.service-content {
-    padding: 20px;
-    display: flex; /* Added */
-    flex-direction: column; /* Added */
-    flex-grow: 1; /* Added to make content fill space if card height varies */
-}
-
-.service-content h3 {
-    margin-bottom: 10px;
-}
-
-.service-content p {
-    margin-bottom: 15px; /* Added margin */
-    flex-grow: 1; /* Allow paragraph to grow */
-    min-height: 60px; /* Added minimum height for alignment */
-}
-
-.service-content .calc-button {
-    margin-top: auto; /* Push button to the bottom */
-    align-self: flex-start; /* Align button to the left */
-}
-
-
 
 /* Styles for inline new badge */
 .new-badge-inline {
