@@ -291,12 +291,13 @@ section {
 .service-image {
     overflow: hidden; /* Keep this to respect border-radius */
     width: 100%; /* Ensure container takes full width */
+    aspect-ratio: 2 / 1; /* Added for consistent height */
 }
 
 .service-image img {
     width: 100%; /* Stretch to full width */
     height: 100%; /* Stretch to full height */
-    object-fit: cover; /* Cover the area, potentially cropping */
+    object-fit: contain; /* Contain the image within the area */
     transition: transform 0.3s ease;
 }
 
@@ -601,3 +602,4 @@ footer {
     margin-left: 10px; /* Space from button */
     vertical-align: middle; /* Align with button text */
 }
+
