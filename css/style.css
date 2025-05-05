@@ -297,7 +297,7 @@ section {
 .service-image img {
     width: 100%; /* Stretch to full width */
     height: 100%; /* Stretch to full height */
-    object-fit: contain; /* Contain the image within the area */
+    object-fit: cover; /* Cover the area, potentially cropping */
     transition: transform 0.3s ease;
 }
 
