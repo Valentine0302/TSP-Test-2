@@ -289,20 +289,14 @@ section {
 }
 
 .service-image {
-    height: 200px;
-    overflow: hidden;
-    display: flex; /* Center image */
-    justify-content: center; /* Center image */
-    align-items: center; /* Center image */
-    background-color: #e9ecef; /* Light background for contain */
+    overflow: hidden; /* Keep this to respect border-radius */
+    width: 100%; /* Ensure container takes full width */
 }
 
 .service-image img {
-    width: auto; /* Adjust width automatically */
-    height: auto; /* Adjust height automatically */
-    max-width: 90%; /* Limit width */
-    max-height: 180px; /* Limit height */
-    object-fit: contain; /* Ensure image fits */
+    width: 100%; /* Stretch to full width */
+    height: 100%; /* Stretch to full height */
+    object-fit: cover; /* Cover the area, potentially cropping */
     transition: transform 0.3s ease;
 }
 
@@ -607,4 +601,3 @@ footer {
     margin-left: 10px; /* Space from button */
     vertical-align: middle; /* Align with button text */
 }
-
