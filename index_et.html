@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSP Transport OÜ - Usaldusväärne rahvusvaheline kaubavedu</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/button-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="mailto:transport@tspgrupp.ee"><i class="fas fa-envelope"></i> transport@tspgrupp.ee</a>
+                    <a href="https://wa.me/3725027401" target="_blank"><i class="fab fa-whatsapp"></i> +3725027401</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-main">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/optimized/enhanced_logo.png" alt="TSP Transport OÜ Logo">
+                    </a>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Avaleht</a></li>
+                        <li><a href="#about">Ettevõttest</a></li>
+                        <li><a href="#services">Teenused</a></li>
+                        <li><a href="#advantages">Eelised</a></li>
+                        <li><a href="#contact">Kontaktid</a></li>
+                    </ul>
+                </nav>
+                <div class="lang-switcher">
+                    <a href="index_en.html" class="lang-link" data-lang-target="en">EN</a> / <span class="active-lang">EE</span> / <a href="index.html" class="lang-link" data-lang-target="ru">RU</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Usaldusväärne rahvusvaheline kaubavedu</h1>
+                <p>TSP Transport OÜ korraldab multimodaalseid vedusid üle kogu maailma.</p>
+                <a href="#contact" class="btn">Teie isiklik assistent on alati kättesaadav – küsige julgelt!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ettevõttest</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>TSP Transport OÜ – hoolivus, ausus ja tulevikutehnoloogiad</h3>
+                    <p>Kui teie ettevõte seisab silmitsi logistiliste väljakutsetega, oleme teie kindel tugi.</p>
+                    <p>Otsite partnerit, kes lahendab ülesanded, mitte ei lükka neid teie peale?</p>
+                    <p>Oleme ekspertide meeskond, kes muudab teie väljakutsed meie motivatsiooniks.</p>
+                    <p>Teile tähendab see kindlustunnet tarne osas. Meile tähendab see vastutust iga teie konteineri, aluse ja tellimuse eest.</p>
+                    <p>Me armastame oma tööd!</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/tallinn_view_flat.svg" alt="TSP Transport OÜ - Tallinn View">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Услуги -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meie teenused</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/services/multimodal_transport_anton_pieck.jpg" alt="Multimodaalsed veod üle maailma">
+                    </div>
+                    <div class="service-content">
+                        <h3>Multimodaalsed veod üle maailma</h3>
+                        <p>FCL/LCL, koondkaubad, üldkaubad ja ülegabariidilised veosed</p>                        <div class="button-container">
+                            <button class="calc-button" onclick="navigateToCalculation(\'freight_index\')">Veotariifide indikatsioon</button>
+                            <span class="new-badge-inline">Uudis</span>
+                        </div>                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/services/europe_transport_anton_pieck.jpg" alt="Autoveod Euroopas">
+                    </div>
+                    <div class="service-content">
+                        <h3>Veolahendused igasuguse keerukusega Euroopas</h3>
+                        <p>FT/LTL, ülegabariidilised ja raskekaubad</p>
+                        <div class="button-container">
+                            <button class="calc-button" onclick="navigateToCalculation(\'cargoboard\')">Arvuta hind</button>
+                        </div>                   </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/services/asia_transport_anton_pieck.jpg" alt="Veod Kesk-Aasiasse">
+                    </div>
+                    <div class="service-content">
+                        <h3>Kaubavedu Kesk-Aasiasse</h3>
+                        <p>Kasahstan, Usbekistan, Tadžikistan</p>                        <button class="calc-button" onclick="navigateToCalculation(\'asia\')">Arvuta hind</button>                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/services/customs_warehouse_flat.svg" alt="Tollilaoteenused">
+                    </div>
+                    <div class="service-content">
+                        <h3>Tollilaoteenused ja tollimaakleri teenused</h3>                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section id="advantages" class="advantages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meie eelised</h2>
+            </div>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Avatus ja vastutus</h3>
+                    <p>Oleme alati avatud dialoogiks ning võtame täieliku vastutuse võetud kohustuste täitmise eest.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Personaalne lähenemine</h3>
+                    <p>Loome igale kliendile personaalseid logistilisi lahendusi, arvestades tema ettevõtte eripära ja veonõudeid.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма обратной связи -->
+    <section id="contact" class="contact-form-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Võtke meiega ühendust</h2>
+            </div>
+            <div class="contact-form-container">
+                <form class="contact-form" action="mailto:transport@tspgrupp.ee" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="name">Nimi</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-post</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Ettevõte</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Sõnum</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-submit">Saada</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TSP Transport OÜ</h3>
+                    <p>Aus lähenemine ja kaasaegsed lahendused</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Navigeerimine</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Avaleht</a></li>
+                        <li><a href="#about">Ettevõttest</a></li>
+                        <li><a href="#services">Teenused</a></li>
+                        <li><a href="#advantages">Eelised</a></li>
+                        <li><a href="#contact">Kontaktid</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontaktid</h3>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Harju maakond, Tallinn, Lasnamäe linnaosa, Lasnamäe tn 20-17, 11416</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>transport@tspgrupp.ee</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span><a href="https://wa.me/3725027401" target="_blank">+3725027401</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TSP Transport OÜ. Kõik õigused kaitstud.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Простой скрипт для мобильного меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+            
+            // Закрытие меню при клике на ссылку
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                });
+            });
+        });
+    </script>
+ <script src="js/main.js"></script>ody>
+</html>
