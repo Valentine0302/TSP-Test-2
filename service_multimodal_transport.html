@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimodal Transport Worldwide - Under Construction</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/button-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="mailto:transport@tspgrupp.ee"><i class="fas fa-envelope"></i> transport@tspgrupp.ee</a>
+                    <a href="https://wa.me/3725027401" target="_blank"><i class="fab fa-whatsapp"></i> +3725027401</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-main">
+                <div class="logo">
+                    <a href="index_en.html"> <!-- Link to English homepage -->
+                        <img src="images/optimized/enhanced_logo.png" alt="TSP Transport OÜ Logo">
+                    </a>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index_en.html#home">Home</a></li>
+                        <li><a href="index_en.html#about">About Us</a></li>
+                        <li><a href="index_en.html#services">Services</a></li>
+                        <li><a href="index_en.html#advantages">Advantages</a></li>
+                        <li><a href="index_en.html#contact">Contacts</a></li>
+                    </ul>
+                </nav>
+                <div class="lang-switcher">
+                    <span class="active-lang">EN</span> / <a href="index_et.html" class="lang-link" data-lang-target="et">EE</a> / <a href="index.html" class="lang-link" data-lang-target="ru">RU</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Секция "Under Construction" -->
+    <section id="under-construction" class="under-construction-section" style="padding: 150px 0; text-align: center;">
+        <div class="container">
+            <h2>Under Construction</h2>
+            <p>This page will be available soon!</p>
+            <!-- Placeholder for funny image -->
+            <div class="funny-image-placeholder" style="margin-top: 30px;">
+                <img src="images/under_construction_bot.png" alt="Funny bot under construction" style="max-width: 300px; height: auto;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TSP Transport OÜ</h3>
+                    <p>Honest Approach and Innovative Solutions</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="index_en.html#home">Home</a></li>
+                        <li><a href="index_en.html#about">About Us</a></li>
+                        <li><a href="index_en.html#services">Services</a></li>
+                        <li><a href="index_en.html#advantages">Advantages</a></li>
+                        <li><a href="index_en.html#contact">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacts</h3>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Harju County, Tallinn, Lasnamäe District, Lasnamäe 20-17, 11416</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>transport@tspgrupp.ee</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span><a href="https://wa.me/3725027401" target="_blank">+3725027401</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TSP Transport OÜ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Простой скрипт для мобильного меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+            
+            // Закрытие меню при клике на ссылку
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (link.getAttribute('href').startsWith('index_en.html#')) {
+                         nav.classList.remove('active');
+                    } // Only close if it's an anchor link on the same page template
+                });
+            });
+        });
+    </script>
+    <script src="js/main.js"></script> <!-- Assuming main.js handles language switching and anchor preservation -->
+</body>
+</html>
+
